@@ -1,0 +1,46 @@
+{
+  "name": "@tadashi/injection",
+  "version": "0.1.0",
+  "description": "Inject data into file",
+  "main": "index.js",
+  "files": [
+    "lib",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "report": "nyc report --reporter=text-lcov | coveralls",
+    "pretest": "xo",
+    "test": "ava"
+  },
+  "keywords": [
+    "inject",
+    "data",
+    "file"
+  ],
+  "author": "Thiago Lagden",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.9.1"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "ava": "0.25.0",
+    "xo": "0.23.0"
+  },
+  "xo": {
+    "envs": [
+      "node"
+    ],
+    "semicolon": false,
+    "rules": {
+      "camelcase": [
+        "error",
+        {
+          "properties": "never"
+        }
+      ],
+      "capitalized-comments": 0
+    }
+  }
+}
