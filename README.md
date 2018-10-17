@@ -41,7 +41,7 @@ This is the source file with the markup showing where is the place will be injec
 </body>
 ```
 
-Making injection specifying the output file
+Making injection specifying the output file  
 ```js
 const injection = require('@tadashi/injection');
 
@@ -50,7 +50,7 @@ const injection = require('@tadashi/injection');
 })()
 ```
 
-Result
+Result: `output.html`  
 ```html
 <body><script>const a = 'Horray';alert(a);</script></body>
 ```
