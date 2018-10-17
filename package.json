@@ -2,6 +2,7 @@
   "name": "@tadashi/injection",
   "version": "1.0.0",
   "description": "Inject data into file",
+  "repository": "lagden/injection",
   "main": "index.js",
   "files": [
     "LICENSE",
