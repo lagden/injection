@@ -20,5 +20,5 @@ test('not found', async t => {
 	const error = await t.throws(injection(
 		'./file.not.found'
 	))
-	t.is(error.message, 'File not found')
+	t.is(error.message, 'File not found: ./file.not.found')
 })

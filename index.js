@@ -52,7 +52,7 @@ function injection(...args) {
 	return new Promise((resolve, reject) => {
 		const [_in, _out = _resolve(process.cwd(), './out.txt'), _pattern = '<!--\\sinject:\\s([\\w./]+)\\s-->'] = args
 		if (_verify(_in) === false) {
-			reject(new Error('File not found'))
+			reject(new Error(`File not found: ${_in}`))
 			return
 		}
 		const regex = new RegExp(_pattern, 'g')
