@@ -60,11 +60,11 @@ Result
 
 #### injection(input[, output][, pattern])
 
-Name        | Type                 | Required    | Default                           | Description
------------ | -------------------- | :---------: | :-------------------------------: | ------------
-input       | string               | yes         | -                                 | Source file
-output      | string               | no          | ./out.txt                         | Result file
-pattern     | string               | no          | <!--\\sinject:\\s([\\w./]+)\\s--> | RegExp pattern
+Name        | Type                 | Required    | Default                             | Description
+----------- | -------------------- | :---------: | :---------------------------------: | ------------
+input       | string               | yes         | -                                   | Source file
+output      | string               | no          | `./out.txt`                         | Result file
+pattern     | string               | no          | `<!--\\sinject:\\s([\\w./]+)\\s-->` | RegExp pattern
 
 
 ## License

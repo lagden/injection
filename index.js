@@ -24,7 +24,7 @@ function _trim() {
 function _verify(file) {
 	try	{
 		const stats = statSync(file)
-		return stats.isFile() ? file : false
+		return stats.isFile()
 	} catch (error) {
 		return false
 	}
@@ -34,10 +34,13 @@ function _perline(line, stream, regex) {
 	let _matches = null
 	let _write = true
 	while ((_matches = regex.exec(line)) !== null) {
-		const parasite = readFileSync(_resolve(process.cwd(), _matches[1]), 'utf-8')
-		if (parasite) {
+		try {
+			const parasite = readFileSync(_resolve(process.cwd(), _matches[1]), 'utf-8')
 			stream.write(parasite)
 			_write = false
+		} catch (error) {
+			stream.write(_matches[0])
+			continue
 		}
 	}
 	if (_write) {
