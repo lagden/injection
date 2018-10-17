@@ -37,7 +37,7 @@ alert(a);
 This is the source file with the markup showing where is the place will be injected: `input.html`  
 ```html
 <body>
-  <script><!-- inject: ./script.js --></script>
+  <script>/* inject: ./script.js */</script>
 </body>
 ```
 
@@ -46,7 +46,7 @@ Making injection specifying the output file
 const injection = require('@tadashi/injection');
 
 (async () => {
-  await injection('./input.html', './output.html')
+  await injection('./input.html', './output.html', '\/\\*\\sinject:\\s([\\w./]+)\\s\\*\\/')
 })()
 ```
 
