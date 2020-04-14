@@ -5,7 +5,6 @@
 
 'use strict'
 
-const process = require('process')
 const readline = require('readline')
 const {Transform} = require('stream')
 const {resolve: _resolve} = require('path')
@@ -25,7 +24,7 @@ function _verify(file) {
 	try	{
 		const stats = statSync(file)
 		return stats.isFile()
-	} catch (error) {
+	} catch {
 		return false
 	}
 }
@@ -38,11 +37,12 @@ function _perline(line, stream, regex) {
 			const parasite = readFileSync(_resolve(process.cwd(), _matches[1]), 'utf-8')
 			stream.write(parasite)
 			_write = false
-		} catch (error) {
+		} catch {
 			stream.write(_matches[0])
 			continue
 		}
 	}
+
 	if (_write) {
 		stream.write(line)
 	}
@@ -55,6 +55,7 @@ function injection(...args) {
 			reject(new Error(`File not found: ${_in}`))
 			return
 		}
+
 		const regex = new RegExp(_pattern, 'g')
 		const trim = _trim()
 		const output = createWriteStream(_out)

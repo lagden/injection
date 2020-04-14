@@ -1,9 +1,9 @@
 'use strict'
 
-import {join} from 'path'
-import {readFileSync} from 'fs'
-import test from 'ava'
-import injection from '..'
+const {join} = require('path')
+const {readFileSync} = require('fs')
+const test = require('ava')
+const injection = require('..')
 
 const fixturesPath = join(__dirname, 'fixtures')
 
@@ -17,8 +17,7 @@ test('inject', async t => {
 })
 
 test('not found', async t => {
-	const error = await t.throws(injection(
-		'./file.not.found'
-	))
-	t.is(error.message, 'File not found: ./file.not.found')
+	await t.throwsAsync(async () => {
+		await injection('./file.not.found')
+	}, {instanceOf: Error, message: 'File not found: ./file.not.found'})
 })
