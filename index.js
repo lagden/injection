@@ -5,9 +5,9 @@
 
 'use strict'
 
+const path = require('path')
 const readline = require('readline')
 const {Transform} = require('stream')
-const {resolve: _resolve} = require('path')
 const {createReadStream, createWriteStream, readFileSync, statSync} = require('fs')
 
 function _trim() {
@@ -34,7 +34,7 @@ function _perline(line, stream, regex) {
 	let _write = true
 	while ((_matches = regex.exec(line)) !== null) {
 		try {
-			const parasite = readFileSync(_resolve(process.cwd(), _matches[1]), 'utf-8')
+			const parasite = readFileSync(path.resolve(process.cwd(), _matches[1]), 'utf-8')
 			stream.write(parasite)
 			_write = false
 		} catch {
@@ -50,7 +50,7 @@ function _perline(line, stream, regex) {
 
 function injection(...args) {
 	return new Promise((resolve, reject) => {
-		const [_in, _out = _resolve(process.cwd(), './out.txt'), _pattern = '<!--\\sinject:\\s([\\w./]+)\\s-->'] = args
+		const [_in, _out = path.resolve(process.cwd(), './out.txt'), _pattern = '<!--\\sinject:\\s([\\w./]+)\\s-->'] = args
 		if (_verify(_in) === false) {
 			reject(new Error(`File not found: ${_in}`))
 			return
@@ -63,7 +63,7 @@ function injection(...args) {
 		readline
 			.createInterface({
 				input,
-				crlfDelay: Infinity,
+				crlfDelay: Number.POSITIVE_INFINITY,
 				terminal: false
 			})
 			.on('line', line => {
