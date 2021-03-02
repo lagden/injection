@@ -63,10 +63,10 @@ Result: `output.html`
 Name        | Type                 | Required    | Default                             | Description
 ----------- | -------------------- | :---------: | :---------------------------------: | ------------
 input       | string               | yes         | -                                   | Source file
-output      | string               | no          | `./out.txt`                         | Result file
+output      | string               | no          | ./out                               | Result file
 pattern     | string               | no          | `<!--\\sinject:\\s([\\w./]+)\\s-->` | RegExp pattern
 
 
 ## License
 
-MIT © [Thiago Lagden](http://lagden.in)
+MIT © [Thiago Lagden](https://github.com/lagden)

@@ -1,3 +1,5 @@
+/test/fixture/out*
+
 # Logs
 logs
 *.log

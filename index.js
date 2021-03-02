@@ -38,7 +38,7 @@ function _perline(line, stream, regex) {
 			stream.write(parasite)
 			_write = false
 		} catch {
-			stream.write(_matches[0])
+			stream.write('')
 			continue
 		}
 	}
@@ -50,7 +50,7 @@ function _perline(line, stream, regex) {
 
 function injection(...args) {
 	return new Promise((resolve, reject) => {
-		const [_in, _out = path.resolve(process.cwd(), './out.txt'), _pattern = '<!--\\sinject:\\s([\\w./]+)\\s-->'] = args
+		const [_in, _out = path.resolve(process.cwd(), './out'), _pattern = '<!--\\sinject:\\s([\\w./]+)\\s-->'] = args
 		if (_verify(_in) === false) {
 			reject(new Error(`File not found: ${_in}`))
 			return
